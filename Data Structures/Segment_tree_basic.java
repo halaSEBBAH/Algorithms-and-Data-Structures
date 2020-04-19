@@ -1,4 +1,5 @@
-
+import java.util.*;
+/*
 public class Segment_Tree {
 		
 	static int[] Tree;
@@ -105,7 +106,7 @@ public class Segment_Tree {
 		build(1,0,n-1);
 		/*updateRange(1,0,n-1,1,3, -8);
 		System.out.println(query(1,-1,6,0,n-1));*/
-		
+/*
 		updateRangeLazy(1,0,n-1,1,3,-8);
 		
 		List<List<Integer>> res =  new LinkedList<>();
@@ -117,3 +118,4 @@ public class Segment_Tree {
 	}	
 	
 }
+*/

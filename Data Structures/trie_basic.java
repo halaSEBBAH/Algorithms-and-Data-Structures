@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-
+/*
 class Node{
 	char valeur;
 	Map<Character,Node> enfants;
@@ -70,3 +70,4 @@ public class triee {
 	}
 	
 }
+*/
