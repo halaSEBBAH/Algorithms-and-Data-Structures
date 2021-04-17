@@ -78,25 +78,99 @@ public class sorting {
         }
         return arr;
     }
-
-
-
     
+    static int[] selection(int[] arr){
+        
+        for(int i= 0; i<arr.length; i++) {
+            int min_index = i;
+            for(int j = i; j<arr.length; j++){
+                if(arr[j] < arr[min_index]) {
+                    min_index = j;
+                }
+
+            }
+            int buffer = arr[min_index];
+            arr[min_index] = arr[i];
+            arr[i] = buffer;
+        }
+
+        return arr;
+    }
+
+
+
+
+    static int[] callMergeSort(int[] arr){
+        mergeSort(0,arr.length-1,arr);
+        return arr;
+    }
+
+    static void mergeSort(int left,int right,int[] arr){
+        if(left >= right) return;
+        int mid = (right+left)/2;
+        mergeSort(left, mid,arr);
+        mergeSort(mid+1,right,arr);
+        merge(left,mid ,right,arr);
+    }
+
+    static void merge(int left,int mid,int right,int[] arr){
+        
+        int lengthLeft = mid - left + 1;
+        int lengthRight = right - mid;
+    
+        int leftArray[] = new int [lengthLeft];
+        int rightArray[] = new int [lengthRight];
+    
+        for (int i = 0; i < lengthLeft; i++)
+            leftArray[i] = arr[left+i];
+
+        for (int i = 0; i < lengthRight; i++)
+            rightArray[i] = arr[mid+i+1];
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        for(int i = left; i< right+1; i++){
+
+            if(rightIndex < lengthRight && leftIndex < lengthLeft ){
+                if(leftArray[leftIndex] <= rightArray[rightIndex]) {
+                    arr[i] = leftArray[leftIndex];
+                    leftIndex++;
+                }
+                else{
+                    arr[i] = rightArray[rightIndex];
+                    rightIndex++;
+                }
+            }
+
+            else if(rightIndex < lengthRight){
+                arr[i] = rightArray[rightIndex];
+                rightIndex++;
+            }
+            
+            else if(leftIndex < lengthLeft ){
+                arr[i] = leftArray[leftIndex];
+                leftIndex++;
+            }
+
+        }
+
+
+    }
 
     public static void main(String[] args) {
         
         int[] arr = new int[]{4,5,2,7,3};
-        System.out.print(Arrays.toString(bubble2(arr)));
+        System.out.print(Arrays.toString(callMergeSort(arr)));
 
         int[] arr2 = new int[]{3,5 ,7 ,8 ,4 ,2 ,1 ,9 ,6};
-        System.out.print(Arrays.toString(bubble2(arr2)));
+        System.out.print(Arrays.toString(callMergeSort(arr2)));
 
         int[] arr3 = new int[]{5,4,7,2,1};
-        System.out.print(Arrays.toString(bubble2(arr3)));
+        System.out.print(Arrays.toString(callMergeSort(arr3)));
 
         int[] arr4 = new int[]{5,4,3,2,1}; 
-        System.out.print(Arrays.toString(bubble2(arr4)));
-
+        System.out.print(Arrays.toString(callMergeSort(arr4)));
 
     }
 
